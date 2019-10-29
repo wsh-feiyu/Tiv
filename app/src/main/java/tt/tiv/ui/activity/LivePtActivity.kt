@@ -3,6 +3,7 @@ package tt.tiv.ui.activity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_livept.*
+import org.jetbrains.anko.startActivity
 import tt.tiv.R
 import tt.tiv.adapter.LivePtAdapter
 import tt.tiv.base.BaseActivity
@@ -34,6 +35,9 @@ class LivePtActivity :BaseActivity(), LivePtView {
     override fun onLoad(result: LivePtBean) {
         refre_layout.isRefreshing=false
         adapter.updataList(result)
+        adapter.listener={
+            startActivity<LiveZbActivity>("data" to it)
+        }
     }
 
     override fun onErr(msg: String?) {

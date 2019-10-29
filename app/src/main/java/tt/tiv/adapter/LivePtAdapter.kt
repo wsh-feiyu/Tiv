@@ -15,6 +15,7 @@ import tt.tiv.widget.LivePtItemView
  */
 class LivePtAdapter:RecyclerView.Adapter<LivePtAdapter.LivePtHodler>() {
     var list=ArrayList<LivePtItem>()
+    var listener:((itemBean:LivePtItem)->Unit)?=null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LivePtHodler {
         return LivePtHodler(LivePtItemView(parent.context))
@@ -28,6 +29,11 @@ class LivePtAdapter:RecyclerView.Adapter<LivePtAdapter.LivePtHodler>() {
         val data=list.get(position)
         val itemView=holder.itemView as LivePtItemView
         itemView.setData(data)
+        itemView.setOnClickListener {
+            listener?.let {
+                it(data)
+            }
+        }
     }
 
     fun updataList(result: LivePtBean) {
