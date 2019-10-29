@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tiv</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">首页</string>
+    <string name="title_dashboard">其他</string>
+    <string name="title_notifications">设置</string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>
