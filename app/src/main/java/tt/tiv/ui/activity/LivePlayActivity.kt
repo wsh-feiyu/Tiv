@@ -1,41 +1,68 @@
 package tt.tiv.ui.activity
 
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
-import com.dueeeke.videoplayer.ijk.IjkPlayerFactory
-import kotlinx.android.synthetic.main.activity_liveplay.*
+
+import android.view.View
+import com.dueeeke.videoplayer.player.VideoView
 import tt.tiv.R
-import tt.tiv.base.BaseActivity
+import tt.tiv.base.BasePlayerActivity
+import tt.tiv.widget.controller.FullScreenVideoController
+import tt.tiv.widget.videoview.FullscreenVideoView
 
-class LivePlayActivity:BaseActivity() {
+class LivePlayActivity: BasePlayerActivity<FullscreenVideoView>() {
+    val videoView by lazy { FullscreenVideoView(this) }
+    val controller by lazy { FullScreenVideoController(this) }
 
-    override fun getLayoutId(): Int {
-        return R.layout.activity_liveplay
+    override fun getContentView(): View? {
+        return videoView
     }
 
-    override fun initData() {
+    override fun initView() {
         val url=intent.getStringExtra("url")
-        dkplayer.setUrl(url)
-//        dkplayer.setPlayerFactory(IjkPlayerFactory.create())
-        dkplayer.start()
-
-
+        videoView.setUrl(url)
+        videoView.setVideoController(controller)
+        videoView.setScreenScaleType(VideoView.SCREEN_SCALE_DEFAULT)
+        videoView.start()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        dkplayer.release()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        dkplayer.pause()
-    }
-
-    override fun onBackPressed() {
-        if (!dkplayer.onBackPressed()){
-            super.onBackPressed()
-        }
-    }
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        videoView.release()
+//    }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        videoView.release()
+//    }
 
 }
+
+//    override fun getLayoutId(): Int {
+//        return FullscreenVideoView(this)
+//    }
+//
+//    override fun initData() {
+//        val url=intent.getStringExtra("url")
+//        dkplayer.setUrl(url)
+////        dkplayer.setPlayerFactory(IjkPlayerFactory.create())
+//        dkplayer.start()
+//
+//
+//    }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        dkplayer.release()
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        dkplayer.pause()
+//    }
+//
+//    override fun onBackPressed() {
+//        if (!dkplayer.onBackPressed()){
+//            super.onBackPressed()
+//        }
+//    }
+//
+//}
