@@ -1,13 +1,11 @@
 package tt.tiv.presenter.impl
 
-import okhttp3.*
 import tt.tiv.model.LivePtBean
 import tt.tiv.net.BaseRequest
 import tt.tiv.net.ResponseHandler
 import tt.tiv.net.impl.LivePtRequest
 import tt.tiv.presenter.interf.LivePtPresenter
 import tt.tiv.view.LivePtView
-import java.io.IOException
 
 /**
  * @ClassName: LivePtPresenterImpl
@@ -27,7 +25,6 @@ class LivePtPresenterImpl(var view:LivePtView?):LivePtPresenter, ResponseHandler
 
     override fun initdata(url:String) {
         LivePtRequest(url+"json.txt",this).excute()
-
     }
 
 

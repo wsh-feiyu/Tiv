@@ -1,5 +1,6 @@
 package tt.tiv.net
 
+import com.google.gson.JsonSyntaxException
 import okhttp3.*
 import tt.tiv.utils.ThreadUtil
 import java.io.IOException
@@ -35,9 +36,14 @@ class NetManager private constructor(){
                 override fun onResponse(call: Call, response: Response) {
 
                     val result=response.body?.string()
+                    try {
+                        val parseResult=req.paseResult(result)
+                        ThreadUtil.runOnMainThread(Runnable { req.handler.onSuccess(parseResult) })
+                    }catch (e:JsonSyntaxException){
+                        req.handler.onErr(e.message)
+                    }
 
-                    val parseResult=req.paseResult(result)
-                    ThreadUtil.runOnMainThread(Runnable { req.handler.onSuccess(parseResult) })
+
                 }
             })
     }

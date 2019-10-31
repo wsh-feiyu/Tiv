@@ -38,6 +38,7 @@ class FullScreenVideoController:StandardVideoController<MediaPlayerControl> {
 
     override fun setPlayState(playState: Int) {
         super.setPlayState(playState)
+//        mFullScreenButton.visibility= View.GONE
         if (playState==VideoView.PLAYER_FULL_SCREEN){
             mFullScreenButton.isGone=true
         }

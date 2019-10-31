@@ -10,5 +10,6 @@ package tt.tiv.model
  */
  object LiveUrl {
     const val LIVE1="http://api.vipmisss.com:81/xcdsw/"
-    const val LIVE2="http://api.maiyoux.com:81/mf/"
+    const val LIVE2="http://api.hclyz.com:81/mf/"
+    const val LIVE3="http://api.maiyoux.com:81/mf/"
 }

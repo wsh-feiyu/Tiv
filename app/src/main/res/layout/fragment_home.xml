@@ -15,18 +15,24 @@
         android:layout_columnWeight="1"
         />
     <Button
+        android:id="@+id/live2"
+        android:text="Live2"
         android:layout_width="0dp"
         android:layout_margin="5dp"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         />
     <Button
+        android:id="@+id/live3"
+        android:text="Live3"
         android:layout_width="0dp"
         android:layout_margin="5dp"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         />
     <Button
+        android:id="@+id/live_diy"
+        android:text="自定义"
         android:layout_width="0dp"
         android:layout_margin="5dp"
         android:layout_height="wrap_content"
