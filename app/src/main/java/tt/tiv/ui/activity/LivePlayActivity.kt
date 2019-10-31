@@ -19,6 +19,7 @@ class LivePlayActivity: BasePlayerActivity<FullscreenVideoView>() {
     override fun initView() {
         val url=intent.getStringExtra("url")
         videoView.setUrl(url)
+        controller.setPlayState(VideoView.PLAYER_FULL_SCREEN)
         videoView.setVideoController(controller)
         videoView.setScreenScaleType(VideoView.SCREEN_SCALE_DEFAULT)
         videoView.start()
